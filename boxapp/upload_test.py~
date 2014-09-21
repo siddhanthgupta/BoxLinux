@@ -1,0 +1,8 @@
+from box import BoxClient
+from StringIO import StringIO
+
+
+response= {u'access_token': u'XnpOFtKpn2JUmAOPwKtUyzunZ0mOQAJt', u'restricted_to': [], u'token_type': u'bearer', u'expires_in': 4072, u'refresh_token': u'7PNqFf1Bmv6uM0zkoTxnFh3UOqYs2qIoLvGe04hlhDv76fDqI4n4JqRo0V8R53NY'}
+client = BoxClient(response['access_token'])
+client.upload_file('shit.txt', StringIO('fuck the world'))
+

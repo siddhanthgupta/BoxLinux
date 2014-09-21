@@ -1,0 +1,23 @@
+#parses output of inotifywatch. Returns only the names of the affected folders
+#eg: Establishing watches...
+#	Finished establishing watches, now collecting statistics.
+#	No events occurred.
+#---> ""
+#	Establishing watches...
+#	Finished establishing watches, now collecting statistics.
+#	total  modify  attrib  close_write  moved_from  moved_to  create  delete  filename
+#	10     1       2       2            1           1         2       1       /home/rounak/Dropbox/Projects/Syncstuff/Test/Src/
+#---> "/home/rounak/Dropbox/Projects/Syncstuff/Test/Src/"
+
+BEGIN { N = 9; }
+/^total/ { 
+	for(i=1; i<=NF; i++)
+		if( $i == "filename" )
+			N = i;
+}
+ 
+/^[0-9]+/ { 
+	print $N;
+}
+  
+#END { print N; }

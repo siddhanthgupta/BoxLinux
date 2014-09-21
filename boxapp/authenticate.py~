@@ -1,0 +1,12 @@
+from box import start_authenticate_v2, finish_authenticate_v2
+url = start_authenticate_v2('2dytaokzsribrjnulz3q67dvz2aicd6s')
+print url
+raw_input()
+#ajcCQFcoQvsO5Wi1N6EuKJWRhEuUBPYJ
+
+#http_get_params = ajcCQFcoQvsO5Wi1N6EuKJWRhEuUBPYJ # for django, this would be request.GET
+code='fTaWGVfLsikgfFJKL7l7B3ANcBYe64FB'
+response = finish_authenticate_v2('2dytaokzsribrjnulz3q67dvz2aicd6s', 'pAeZkP0RxBPo4RpP8g5KziOSVv2CNlmx', code)
+
+
+#client = BoxClient(response['access_token'])

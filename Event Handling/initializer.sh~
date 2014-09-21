@@ -1,0 +1,6 @@
+#!/bin/bash
+#\build the .lscaches in all the directories
+
+source config.sh
+
+./initcache.sh "$ROOT"

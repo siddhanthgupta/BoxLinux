@@ -1,0 +1,19 @@
+#!/bin/bash
+#runs inotifywatch over the root directory
+
+source config.sh
+
+notify(){
+	inotifywatch -e modify,attrib,close_write,moved_from,moved_to,create,delete -r -t $CHECKINT $1 > toparse$$.txt || (echo 'Error while establishing daemon.' && exit 1)
+	lockfile $JOBBUF.lock
+	awk -f parser toparse$$.txt >> $JOBBUF
+	rm -f $JOBBUF.lock
+	rm toparse$$.txt
+}
+
+
+#main
+echo $$ > tokill.txt
+while true; do
+	notify $ROOT
+done
